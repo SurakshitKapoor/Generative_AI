@@ -34,12 +34,14 @@ template = load_prompt("./prompts/template.json")
 
 if st.button("Generate Summary"):
     
-    prompt_text = template.format(
-        player=player,
-        format_type=format_type,
-        strength=strength
-    )
-    summary = model.invoke(prompt_text)
+    # using langchain ecosystem : chains
+    chain = template | model
+
+    result = chain.invoke({
+        'player' : player,
+        'format_type' : format_type,
+        'strength' : strength 
+    })
     
     st.subheader("Cricket Summary:")
-    st.write(summary.content)
+    st.write(result.content)
