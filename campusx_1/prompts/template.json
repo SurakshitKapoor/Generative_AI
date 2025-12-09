@@ -1,0 +1,17 @@
+{
+    "name": null,
+    "input_variables": [
+        "format_type",
+        "player",
+        "strength"
+    ],
+    "optional_variables": [],
+    "output_parser": null,
+    "partial_variables": {},
+    "metadata": null,
+    "tags": null,
+    "template": "Summarize the career of {player}, an Indian cricketer, in {format_type} matches. Highlight their main strength: {strength}. Keep the summary short, accurate, and limited to 5 lines. Do not hallucinate or make up statistics.",
+    "template_format": "f-string",
+    "validate_template": false,
+    "_type": "prompt"
+}
