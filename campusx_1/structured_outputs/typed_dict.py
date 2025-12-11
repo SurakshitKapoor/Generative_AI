@@ -4,13 +4,14 @@ from langchain_ollama import ChatOllama
 from typing import TypedDict, List, Annotated
 
 class Review(TypedDict):
-    keywords : Annotated[ List[str], "list 5 important keywords based on the passed theme" ]
+    keywords: Annotated[List[str], "list 5 important keywords based on the passed theme"]
     summary: str
-    sentiment : Annotated [str, "choose either pos, neg, or neutral"]
-    pros : Annotated [List[str], "mention 3 advantages or pros."]
-    cons : Annotated [List[str], "mention 3 disadvantages or cons." ]
+    sentiment: Annotated[str, "choose either pos, neg, or neutral"]
+    advantages: Annotated[List[str], "mention 3 advantages of passed content"]
+    disadvantages: Annotated[List[str], "mention 3 disadvantages of passed content"]
 
-model = ChatOllama(model="gemma2:2b")
+
+model = ChatOllama(model="gemma3:1b")
 
 structured_output = model.with_structured_output(Review, strict = True)
 
@@ -30,7 +31,7 @@ print("type is:", type(response))
 print()
 print(response["summary"])
 print()
-print(response["sentiment"])
+print(response["keywords"])
 print()
 print(response["pros"])
 
